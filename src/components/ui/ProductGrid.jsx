@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import products from "../../data/products";
+import ModalVideo from "./ModalVideo";
 
 const ProductGrid = () => {
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
   return (
     <section className="product-section">
       <h2 className="section-title">Catálogo de Capacitaciones</h2>
@@ -19,11 +22,17 @@ const ProductGrid = () => {
             <div className="product-info">
               <h3>{p.title}</h3>
               <p>{p.description}</p>
-              <button>Ver más</button>
+              <button onClick={() => setSelectedCourse(p)}>Ver más</button>
             </div>
           </div>
         ))}
       </div>
+
+      <ModalVideo
+        isOpen={!!selectedCourse}
+        onClose={() => setSelectedCourse(null)}
+        course={selectedCourse}
+      />
     </section>
   );
 };
