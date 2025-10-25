@@ -26,7 +26,7 @@ function App() {
   return (
     visibleApp ?
     <>
-      <Header setAuthOpen={setAuthOpen} />
+      <Header user={user} setAuthOpen={setAuthOpen} />
       <main className="main-container">
         <Home />
       </main>
@@ -34,7 +34,7 @@ function App() {
       <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)}/>
     </> : 
     <>
-      <AuthModal SetUser={SetUser} SetIdUser={SetIdUser} isOpen={authOpen} onClose={() => setAuthOpen(false)}/>
+      <AuthModal SetVisibleApp={SetVisibleApp} SetUser={SetUser} SetIdUser={SetIdUser} isOpen={authOpen} onClose={() => setAuthOpen(false)}/>
     </>
   );
 }

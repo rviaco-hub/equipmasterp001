@@ -10,18 +10,18 @@
 
 
   --wd-primary-color: #e00513;
-    --wd-alternative-color: #606060;
-    --wd-link-color: rgb(214, 0, 0);
-    --wd-link-color-hover: rgb(147, 34, 34);
-    --btn-default-bgcolor: #e00513;
-    --btn-default-bgcolor-hover: #aa0000;
-    --btn-accented-bgcolor: #e00513;
-    --btn-accented-bgcolor-hover: #a80000;
-    --wd-form-brd-width: 1px;
-    --notices-success-bg: #69d140;
-    --notices-success-color: #ffffff;
-    --notices-warning-bg: #238ddd;
-    --notices-warning-color: #ffffff;
+  --wd-alternative-color: #606060;
+  --wd-link-color: rgb(214, 0, 0);
+  --wd-link-color-hover: rgb(147, 34, 34);
+  --btn-default-bgcolor: #e00513;
+  --btn-default-bgcolor-hover: #aa0000;
+  --btn-accented-bgcolor: #e00513;
+  --btn-accented-bgcolor-hover: #a80000;
+  --wd-form-brd-width: 1px;
+  --notices-success-bg: #69d140;
+  --notices-success-color: #ffffff;
+  --notices-warning-bg: #238ddd;
+  --notices-warning-color: #ffffff;
 
 
 }
@@ -69,24 +69,35 @@ body {
 .header {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   height: var(--header-height);
-  background-color: var(--primary-color);
-  color: var(--light-text);
+  background-color: var(--notices-success-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: var(--wd-primary-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0.8 2rem;
   z-index: 1000;
 }
 
-.header .logo {
-  font-weight: 700;
-  font-size: 1.3rem;
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin: 10px;
 }
 
-.header .logo span {
-  color: var(--secondary-color);
+.logo-img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
 }
 
 .nav {
@@ -95,7 +106,7 @@ body {
 }
 
 .nav a {
-  color: var(--light-text);
+  color: var(--wd-primary-color);
   text-decoration: none;
   font-weight: 500;
 }
@@ -104,14 +115,20 @@ body {
   display: none;
   cursor: pointer;
   font-size: 1.5rem;
+  transition: color 0.2s;
 }
 
 @media (max-width: 768px) {
   .nav {
     display: none;
   }
+
   .menu-toggle {
     display: block;
+  }
+
+  .logo-img {
+    height: 42px;
   }
 }
 
@@ -121,7 +138,7 @@ body {
   top: var(--header-height);
   left: 0;
   width: 100%;
-  background: var(--primary-color);
+  background: var(--wd-link-color-hover);
   color: white;
   display: flex;
   flex-direction: column;
@@ -148,7 +165,7 @@ body {
 
 .close-btn {
   margin-top: 1rem;
-  background: var(--secondary-color);
+  background: var(--wd-alternative-color);
   border: none;
   color: white;
   padding: 0.5rem 1rem;
@@ -197,7 +214,7 @@ body {
 .course-card {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform var(--transition);
 }
@@ -214,7 +231,7 @@ body {
 
 .course-card h4 {
   margin: 0.8rem;
-  color: var(--primary-color);
+  color: var(--wd-primary-color);
 }
 
 .course-card p {
@@ -222,7 +239,7 @@ body {
 }
 
 .course-card button {
-  background: var(--primary-color);
+  background: var(--wd-primary-color);
   border: none;
   color: white;
   padding: 0.6rem 1rem;
@@ -235,12 +252,12 @@ body {
 .aside {
   width: 250px;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 1rem;
 }
 
 .aside h3 {
-  color: var(--primary-color);
+  color: var(--wd-primary-color);
   margin-bottom: 0.5rem;
 }
 
@@ -255,7 +272,7 @@ body {
 
 /* Footer */
 .footer {
-  background-color: var(--primary-color);
+  background-color: var(--wd-primary-color);
   color: var(--light-text);
   text-align: center;
   padding: 1rem 0;
@@ -278,7 +295,7 @@ body {
 
 .section-title {
   font-size: 2rem;
-  color: var(--primary-color);
+  color: var(--wd-primary-color);
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
@@ -299,7 +316,7 @@ body {
 .product-card {
   background: #fff;
   border-radius: 14px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   max-width: 320px;
   transition: transform var(--transition), box-shadow var(--transition);
@@ -309,7 +326,7 @@ body {
 
 .product-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .product-image {
@@ -327,7 +344,7 @@ body {
 }
 
 .product-info h3 {
-  color: var(--primary-color);
+  color: var(--wd-primary-color);
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
@@ -339,7 +356,7 @@ body {
 }
 
 .product-info button {
-  background: var(--secondary-color);
+  background: var(--wd-primary-color);
   border: none;
   color: #fff;
   padding: 0.6rem 1rem;
@@ -350,16 +367,18 @@ body {
 }
 
 .product-info button:hover {
-  background: var(--primary-color);
+  background: var(--wd-link-color-hover);
 }
 
 @media (max-width: 480px) {
   .product-section {
     padding: 2rem 1rem;
   }
+
   .section-title {
     font-size: 1.5rem;
   }
+
   .product-grid {
     gap: 1rem;
   }
@@ -407,6 +426,7 @@ body {
 .mural::-webkit-scrollbar {
   height: 8px;
 }
+
 .mural::-webkit-scrollbar-thumb {
   background: rgba(0, 188, 212, 0.4);
   border-radius: 10px;
@@ -435,7 +455,7 @@ body {
 .mural-item .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
   border-radius: 0;
   z-index: 1;
 }
@@ -452,13 +472,27 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* 📱 Responsive */
@@ -467,15 +501,18 @@ body {
     width: 240px;
     height: 150px;
   }
+
   .aside-title {
     font-size: 1.3rem;
   }
 }
+
 @media (max-width: 480px) {
   .mural-item {
     width: 200px;
     height: 130px;
   }
+
   .mural-item p {
     font-size: 0.9rem;
   }
@@ -496,8 +533,13 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .modal-content {
@@ -507,13 +549,20 @@ body {
   max-width: 720px;
   padding: 1.5rem;
   position: relative;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
   animation: scaleIn 0.3s ease;
 }
 
 @keyframes scaleIn {
-  from { transform: scale(0.95); opacity: 0.5; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .modal-close {
@@ -529,12 +578,12 @@ body {
 }
 
 .modal-close:hover {
-  color: var(--primary-color);
+  color: var(--wd-link-color-hover);
 }
 
 .modal-content h2 {
   margin-top: 0.5rem;
-  color: var(--primary-color);
+  color: var(--wd-primary-color);
 }
 
 .modal-content p {
@@ -545,7 +594,8 @@ body {
 
 .modal-video {
   position: relative;
-  padding-top: 56.25%; /* 16:9 */
+  padding-top: 56.25%;
+  /* 16:9 */
 }
 
 .modal-video iframe {
@@ -561,7 +611,7 @@ body {
 .auth-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0,0,0,0.65);
+  background-color: rgba(0, 0, 0, 0.65);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -576,7 +626,7 @@ body {
   max-width: 400px;
   padding: 2rem;
   position: relative;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
   animation: scaleIn 0.3s ease;
 }
 
@@ -591,10 +641,13 @@ body {
   color: #555;
   transition: color 0.2s;
 }
-.auth-close:hover { color: var(--primary-color); }
+
+.auth-close:hover {
+  color: var(--wd-link-color-hover);
+}
 
 .auth-modal h2 {
-  color: var(--primary-color);
+  color: var(--wd-primary-color);
   margin-bottom: 0.5rem;
   text-align: center;
 }
@@ -628,12 +681,12 @@ body {
 }
 
 .auth-form input:focus {
-  border-color: var(--primary-color);
+  border-color: var(--wd-link-color-hover);
 }
 
 .auth-btn {
   margin-top: 0.8rem;
-  background: var(--primary-color);
+  background: var(--wd-primary-color);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -642,8 +695,9 @@ body {
   cursor: pointer;
   transition: background var(--transition);
 }
+
 .auth-btn:hover {
-  background: var(--secondary-color);
+  background: var(--wd-link-color-hover);
 }
 
 .auth-toggle {
@@ -653,12 +707,11 @@ body {
 }
 
 .auth-toggle span {
-  color: var(--secondary-color);
+  color: var(--wd-link-color-hover);
   cursor: pointer;
   font-weight: 600;
 }
+
 .auth-toggle span:hover {
   text-decoration: underline;
 }
-
-
