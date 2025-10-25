@@ -64,12 +64,12 @@ const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, isOpen, onClose }) => {
     }
   };
 
-  const testBackend = async () =>{
+  const testBackend = async () => {
     const response = await fetch("https://apiequipmaster.onrender.com/api/users/test", {
-        method: "GET",
-        mode: "cors",
-      });
-      console.log(response);
+      method: "GET",
+      mode: "cors",
+    });
+    console.log(response);
   }
 
 
@@ -125,7 +125,7 @@ const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, isOpen, onClose }) => {
             </p>
           )}
         </div>
-        <a onClick={()=>testBackend()}>test backend</a>
+        <a onClick={() => testBackend()}>test backend</a>
       </div>
     </div>
   );
