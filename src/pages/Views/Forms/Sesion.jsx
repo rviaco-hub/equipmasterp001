@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import RobotCheck from "../../../components/ui/ReCapcha";
+import CircularProgress from '@mui/material/CircularProgress';
+import { Box } from "@mui/material";
 
 
-const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, isOpen, onClose }) => {
+const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, SetRolUser, isOpen, onClose }) => {
   const [isRegister, setIsRegister] = useState(false);
-  const [form, setForm] = useState({ cedula: "", nombre: "" });
+  const [form, setForm] = useState({ cedula: "", nombre: "", rol: false });
+  const [verified, setVerified] = useState(false);
+  const [loading, setLoading] = useState("none")
 
   if (!isOpen) return null;
 
@@ -26,6 +33,13 @@ const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, isOpen, onClose }) => {
       return;
     }
 
+    if (!verified) {
+      alert("Debemos garantizar que sea un humano.")
+      return
+    } else {
+      setLoading("block")
+    }
+
     // Definimos endpoint según la acción (login / registro)
     const endpoint = isRegister ? "register" : "login";
 
@@ -43,6 +57,8 @@ const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, isOpen, onClose }) => {
         mode: "cors",
       });
 
+
+
       const data = await response.json();
 
       if (!response.ok) {
@@ -52,6 +68,7 @@ const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, isOpen, onClose }) => {
         SetVisibleApp(true)
         SetUser(form.nombre)
         SetIdUser(form.cedula)
+        SetRolUser(form.rol)
       }
 
       console.log("Respuesta del servidor:", data);
@@ -60,7 +77,8 @@ const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, isOpen, onClose }) => {
       onClose();
     } catch (error) {
       console.error("Error al conectar con el backend:", error);
-      alert("No se pudo conectar con el servidor. Intenta nuevamente más tarde.");
+      alert("No se pudo conectar con el servidor. Intenta nuevamente más tarde."); 
+      location.reload()
     }
   };
 
@@ -106,6 +124,21 @@ const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, isOpen, onClose }) => {
             value={form.nombre}
             onChange={handleChange}
           />
+          <div>
+            <label style={{ margin: "30px" }}>Administrador</label>
+            <input
+              id="rolSwitch"
+              type="checkbox"
+              name="rol"
+              checked={form.rol}
+              onChange={(e) =>
+                setForm({ ...form, rol: e.target.checked })
+              }
+            />
+          </div>
+
+          <RobotCheck verified={verified} setVerified={setVerified} />
+          <CircularProgress style={{ display: loading }} disableShrink />
 
           <button type="submit" className="auth-btn">
             {isRegister ? "Registrarse" : "Ingresar"}

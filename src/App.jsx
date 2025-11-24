@@ -10,6 +10,7 @@ function App() {
   const [visibleApp, SetVisibleApp] = useState(false)
   const [user, SetUser] = useState("");
   const [idUser, SetIdUser] = useState(0)
+  const [rolUser, SetRolUser] = useState(false)
   const [authOpen, setAuthOpen] = useState(true);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ function App() {
       <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)}/>
     </> : 
     <>
-      <AuthModal SetVisibleApp={SetVisibleApp} SetUser={SetUser} SetIdUser={SetIdUser} isOpen={authOpen} onClose={() => setAuthOpen(false)}/>
+      <AuthModal SetVisibleApp={SetVisibleApp} SetUser={SetUser} SetIdUser={SetIdUser} SetRol={SetRolUser} isOpen={authOpen} onClose={() => setAuthOpen(false)}/>
     </>
   );
 }
