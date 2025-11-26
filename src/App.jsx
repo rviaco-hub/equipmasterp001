@@ -4,6 +4,10 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import AuthModal from "./pages/Views/Forms/Sesion";
 
+import Capacitaciones from "./pages/Views/Capacitaciones"
+import Dashboard from "./pages/Views/Dashboard"
+import Evaluaciones from "./pages/Views/Evaluaciones"
+
 
 function App() {
   
@@ -12,6 +16,7 @@ function App() {
   const [idUser, SetIdUser] = useState(0)
   const [rolUser, SetRolUser] = useState(false)
   const [authOpen, setAuthOpen] = useState(true);
+  const [view, setView] = useState("Home")
 
   useEffect(() => {
     if (user === "" || idUser === 0) {
@@ -27,15 +32,24 @@ function App() {
   return (
     visibleApp ?
     <>
-      <Header user={user} setAuthOpen={setAuthOpen} />
-      <main className="main-container">
+      <Header rolUser={rolUser} setView={setView} user={user} setAuthOpen={setAuthOpen} />
+      <main style={{ display: view === "Home" ? "block" : "none"}} className="main-container">
         <Home />
+      </main>
+      <main style={{ display: view === "Capacitaciones" ? "block" : "none"}} className="main-container">
+        <Capacitaciones />
+      </main>
+      <main style={{ display: view === "Dashboard" ? "block" : "none"}} className="main-container">
+        <Dashboard />
+      </main>
+      <main style={{ display: view === "Evaluaciones" ? "block" : "none"}} className="main-container">
+        <Evaluaciones />
       </main>
       <Footer />
       <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)}/>
     </> : 
     <>
-      <AuthModal SetVisibleApp={SetVisibleApp} SetUser={SetUser} SetIdUser={SetIdUser} SetRol={SetRolUser} isOpen={authOpen} onClose={() => setAuthOpen(false)}/>
+      <AuthModal SetVisibleApp={SetVisibleApp} SetUser={SetUser} SetIdUser={SetIdUser} SetRolUser={SetRolUser} isOpen={authOpen} onClose={() => setAuthOpen(false)}/>
     </>
   );
 }

@@ -1,11 +1,11 @@
 import React from "react";
 
-
-const Capacitaciones = () => {
+const Dashboard = () => {
   return (
-    <section className="Container">
+    <section className="">
+      Dashboard
     </section>
   );
 };
 
-export default Capacitaciones;
+export default Dashboard;

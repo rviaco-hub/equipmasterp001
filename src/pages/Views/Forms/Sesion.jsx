@@ -44,7 +44,8 @@ const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, SetRolUser, isOpen, onCl
     const endpoint = isRegister ? "register" : "login";
 
     // Usa una URL base flexible para balanceo y despliegue
-    const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    const API_BASE_URL = "http://localhost:5000";
+    // import.meta.env.VITE_API_URL 
 
     try {
       const response = await fetch(`${API_BASE_URL}/api/users/${endpoint}`, {
@@ -77,7 +78,7 @@ const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, SetRolUser, isOpen, onCl
       onClose();
     } catch (error) {
       console.error("Error al conectar con el backend:", error);
-      alert("No se pudo conectar con el servidor. Intenta nuevamente más tarde."); 
+      alert(error); 
       location.reload()
     }
   };
@@ -89,7 +90,6 @@ const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, SetRolUser, isOpen, onCl
     });
     console.log(response);
   }
-
 
   return (
     <div className="auth-overlay" onClick={onClose}>

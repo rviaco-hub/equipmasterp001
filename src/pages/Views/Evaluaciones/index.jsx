@@ -1,11 +1,11 @@
 import React from "react";
 
-const Capacitaciones = () => {
+const Evaluaciones = () => {
   return (
     <section className="">
-      Capacitaciones
+      Evaluaciones
     </section>
   );
 };
 
-export default Capacitaciones;
+export default Evaluaciones;
