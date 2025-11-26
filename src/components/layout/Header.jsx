@@ -26,12 +26,12 @@ const Header = ({ rolUser, setView, user }) => {
       </div>
       {!rolUser ?
         <nav className={`nav ${menuOpen ? "open" : ""}`}>
-          <a onClick={()=>setView("Capacitaciones")}>Capacitaciones</a>
-          <a onClick={()=>setView("Evaluaciones")}>Evaluaciones</a>
+          <button onClick={()=>setView("Capacitaciones")}>Capacitaciones</button>
+          <button onClick={()=>setView("Evaluaciones")}>Evaluaciones</button>
           <h4>{user}</h4>
         </nav> :
         <nav className={`nav ${menuOpen ? "open" : ""}`}>
-          <a onClick={()=>setView("Dashboard")}>Reportes</a>
+          <button onClick={()=>setView("Dashboard")}>Reportes</button>
           <h4>{user}</h4>
         </nav>
         }
@@ -40,7 +40,7 @@ const Header = ({ rolUser, setView, user }) => {
         ☰
       </div>
 
-      {menuOpen && <MobileMenu user={user} closeMenu={() => setMenuOpen(false)} />}
+      {menuOpen && <MobileMenu rolUser={rolUser} setView={setView} user={user} closeMenu={() => setMenuOpen(false)} />}
     </header>
   );
 };
