@@ -383,8 +383,7 @@ const Dashboard = ({ trabajadores = [] }) => {
               src={
                 videoPlaying.url
                   ? videoPlaying.url
-                  : `https://servervvdeofree.onrender.com/videos/${videoPlaying.id}`
-
+                  : `https://servervvdeofree.onrender.com/videos/${videoPlaying.id}/file`
               }
               type="video/mp4"
             />
