@@ -56,6 +56,11 @@ const Dashboard = ({ trabajadores = [] }) => {
   const [videoPlaying, setVideoPlaying] = useState(null);
 
 
+  useEffect(() => {
+    console.log(videos)
+  }, [videos]);
+
+
   const API_BASE_URL = import.meta.env.VITE_API_URL // "http://localhost:5000";
 
   // ============================
@@ -66,14 +71,11 @@ const Dashboard = ({ trabajadores = [] }) => {
   }, []);
 
   const refreshData = () => {
-    fetch(`${API_BASE_URL}api/videos/capacitacion`)
+    fetch(`${API_BASE_URL}api/videos/`)
       .then((response) => response.json())
       .then((data) => setVideos(data))
       .catch(() => setVideos([]));
   };
-
-
-
 
 
   return (
