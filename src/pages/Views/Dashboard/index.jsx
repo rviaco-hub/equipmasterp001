@@ -378,6 +378,7 @@ const Dashboard = ({ trabajadores = [] }) => {
           {videoPlaying && (
             <video
               width="100%"
+              height="auto"
               controls
               autoPlay
               src={
