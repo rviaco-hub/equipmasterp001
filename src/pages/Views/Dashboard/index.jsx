@@ -289,12 +289,18 @@ const Dashboard = ({ trabajadores = [] }) => {
                 <TableRow key={i}>
                   <TableCell>{v.titulo}</TableCell>
                   <TableCell>
-                    {v.url ? (
-                      <a href={v.url} target="_blank" rel="noopener noreferrer">Ver video</a>
-                    ) : (
-                      <a href={`/data/videos/${v.filename}`} target="_blank" rel="noopener noreferrer">Ver video</a>
-                    )}
+                    <Button
+                      variant="outlined"
+                      size="small"
+                      onClick={() => {
+                        setVideoPlaying(v);
+                        setOpenPlayer(true);
+                      }}
+                    >
+                      Ver video
+                    </Button>
                   </TableCell>
+
                   <TableCell>
                     <Button color="error" onClick={() => handleDeleteVideo(v.id)} size="small">
                       Eliminar
@@ -356,6 +362,37 @@ const Dashboard = ({ trabajadores = [] }) => {
           )}
         </DialogActions>
       </Dialog>
+
+      <Dialog
+        open={openPlayer}
+        onClose={() => setOpenPlayer(false)}
+        maxWidth="md"
+        fullWidth
+      >
+        <DialogTitle>{videoPlaying?.titulo}</DialogTitle>
+
+        <DialogContent>
+          {videoPlaying && (
+            <video
+              width="100%"
+              height="auto"
+              controls
+              autoPlay
+              src={
+                videoPlaying.url
+                  ? videoPlaying.url
+                  : `https://servervvdeofree.onrender.com/videos/${videoPlaying.filename}`
+              }
+            />
+          )}
+        </DialogContent>
+
+        <DialogActions>
+          <Button onClick={() => setOpenPlayer(false)}>Cerrar</Button>
+        </DialogActions>
+      </Dialog>
+
+
     </section>
   );
 };
