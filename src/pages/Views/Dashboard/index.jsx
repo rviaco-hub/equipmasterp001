@@ -71,7 +71,7 @@ const Dashboard = ({ trabajadores = [] }) => {
   }, []);
 
   const refreshData = () => {
-    fetch(`${API_BASE_URL}/api/videos/capacitacion`)
+    fetch(`${API_BASE_URL}api/videos/capacitacion`)
       .then((response) => response.json())
       .then((data) => setVideos(data))
       .catch(() => setVideos([]));
@@ -260,7 +260,7 @@ const Dashboard = ({ trabajadores = [] }) => {
 
       {/* ========== TABLA VIDEOS ========== */}
 
-      <h3 style={{ marginTop: "30px" }}>Videos de capacitación</h3>
+      <h3 style={{ margin: "30px 0" }}>Videos de capacitación</h3>
 
       <Button
         variant="contained"
@@ -378,6 +378,7 @@ const Dashboard = ({ trabajadores = [] }) => {
           {videoPlaying && (
             <video
               width="100%"
+              height="auto"
               controls
               autoPlay
               src={
