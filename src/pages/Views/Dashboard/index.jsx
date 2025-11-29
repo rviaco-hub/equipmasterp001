@@ -52,6 +52,9 @@ const Dashboard = ({ trabajadores = [] }) => {
   const [videoTitulo, setVideoTitulo] = useState("");
   const [videoURL, setVideoURL] = useState("");
   const [videoFile, setVideoFile] = useState(null);
+  const [openPlayer, setOpenPlayer] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(null);
+
 
   useEffect(() => {
     console.log(videos)
