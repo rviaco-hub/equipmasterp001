@@ -53,6 +53,11 @@ const Dashboard = ({ trabajadores = [] }) => {
   const [videoURL, setVideoURL] = useState("");
   const [videoFile, setVideoFile] = useState(null);
 
+  useEffect(() => {
+    console.log(videos)
+  }, [videos]);
+
+
   const API_BASE_URL = import.meta.env.VITE_API_URL // "http://localhost:5000";
 
   // ============================
@@ -176,6 +181,7 @@ const Dashboard = ({ trabajadores = [] }) => {
 
     refreshData();
   };
+
 
   return (
     <section className="container">
