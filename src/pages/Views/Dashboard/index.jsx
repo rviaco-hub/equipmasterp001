@@ -290,7 +290,7 @@ const Dashboard = ({ trabajadores = [] }) => {
             ) : (
               videos.map((v, i) => (
                 <TableRow key={i}>
-                  <TableCell>{v.titulo}</TableCell>
+                  <TableCell>{v.title}</TableCell>
                   <TableCell>
                     <Button
                       variant="outlined"
@@ -378,14 +378,15 @@ const Dashboard = ({ trabajadores = [] }) => {
           {videoPlaying && (
             <video
               width="100%"
-              height="auto"
               controls
               autoPlay
               src={
                 videoPlaying.url
                   ? videoPlaying.url
-                  : `https://servervvdeofree.onrender.com/videos/${videoPlaying.filename}`
+                  : `https://servervvdeofree.onrender.com/videos/${videoPlaying.id}`
+
               }
+              type="video/mp4"
             />
           )}
         </DialogContent>
