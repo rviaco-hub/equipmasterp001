@@ -372,7 +372,7 @@ const Dashboard = ({ trabajadores = [] }) => {
         maxWidth="md"
         fullWidth
       >
-        <DialogTitle>{videoPlaying?.titulo}</DialogTitle>
+        <DialogTitle>{videoPlaying?.title}</DialogTitle>
 
         <DialogContent>
           {videoPlaying && (
