@@ -5,12 +5,12 @@ const MobileMenu = ({ rolUser, setView, user, closeMenu }) => {
     <div className="mobile-menu">
       {!rolUser ?
         <ul>
-          <li><button className="btn" onClick={() => setView("Capacitaciones") && closeMenu}>Capacitaciones</button></li>
-          <li><button onClick={() => setView("Evaluaciones") && closeMenu}>Evaluaciones</button></li>
+          <li><button className="btn" onClick={() => setView("Capacitaciones")}>Capacitaciones</button></li>
+          <li><button onClick={() => setView("Evaluaciones")}>Evaluaciones</button></li>
           <li><h3>{user}</h3></li>
         </ul> :
         <ul>
-          <li><button onClick={() => setView("Dashboard") && closeMenu}>Reportes</button></li>
+          <li><button onClick={() => setView("Dashboard")}>Reportes</button></li>
           <li><h3>{user}</h3></li>
         </ul>
       }
