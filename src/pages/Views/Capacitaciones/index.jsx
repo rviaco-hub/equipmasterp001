@@ -72,14 +72,8 @@ const Dashboard = ({ trabajadores = [] }) => {
 
   const refreshData = () => {
     fetch(`${API_BASE_URL}/api/videos/capacitacion`)
-      .then((response) => {
-        console.log(response);
-        response.json()
-      })
-      .then((data) => {
-        console.log(data);
-        setVideos(data)
-      })
+      .then((response) => response.json())
+      .then((data) => setVideos(data))
       .catch((error) => {
         console.log(error);
         setVideos([])
