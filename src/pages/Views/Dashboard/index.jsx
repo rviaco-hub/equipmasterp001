@@ -377,8 +377,14 @@ const Dashboard = ({ trabajadores = [] }) => {
         <DialogContent>
           {videoPlaying && (
             <video
-              width="100%"
-              height="auto"
+              style={{
+                width: "80vw",
+                maxWidth: "80vw",
+                height: "80vh",
+                maxHeight: "80vh",
+                objectFit: "contain",
+                backgroundColor: "black",
+              }}
               controls
               autoPlay
               src={
