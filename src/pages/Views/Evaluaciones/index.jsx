@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import PrimerosAuxES from "./Contenido/PrimerosAuxES";
 import ControlIncendios from "./Contenido/ControlIncendios";
 import BrigadistaSI from "./Contenido/BrigadistaSI";
+import { Box, Button } from "@mui/material";
+
 
 
 const Evaluaciones = () => {
@@ -206,14 +208,25 @@ const Evaluaciones = () => {
   };
 
   return (
-    <section className="">
-      
+    <section style={{margin:"100px 0"}}>
+
       {/* 📌 ÍNDICE DE SECCIONES */}
-      <div style={{ marginBottom: "20px" }}>
-        <button onClick={() => mostrarForm("primeros")}>Primeros Auxilios</button>
-        <button onClick={() => mostrarForm("incendios")}>Control de Incendios</button>
-        <button onClick={() => mostrarForm("brigadista")}>Brigadista</button>
-      </div>
+      <Box
+        sx={{
+          width:"100%",
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "1fr",   // móviles → 1 columna
+            sm: "1fr 1fr", // tablets → 2 columnas (opcional)
+            md: "1fr 1fr 1fr", // escritorio → 3 columnas
+          },
+          gap: 0.5,
+        }}
+      >
+        <Button style={{color:"red", backgroundColor:"#ddd"}} onClick={() => mostrarForm("primeros")}>Primeros Auxilios</Button>
+        <Button style={{color:"red", backgroundColor:"#ddd"}} onClick={() => mostrarForm("incendios")}>Control de Incendios</Button>
+        <Button style={{color:"red", backgroundColor:"#ddd"}} onClick={() => mostrarForm("brigadista")}>Brigadista</Button>
+      </Box>
 
 
       <div style={{ display: visibleFormPrimerosAuxES }} >
