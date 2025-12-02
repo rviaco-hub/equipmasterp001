@@ -27,7 +27,7 @@ import {
 
 
 
-const PrimerosAuxES = ({ preguntas }) => {
+const BrigadistaSI = ({ preguntas }) => {
   const [respuestas, setRespuestas] = useState({}); // { [id]: 'A'|'B'|'C'|'D' }
   const [enviado, setEnviado] = useState(false);
   const [puntaje, setPuntaje] = useState(0);
@@ -269,4 +269,4 @@ const PrimerosAuxES = ({ preguntas }) => {
   );
 };
 
-export default PrimerosAuxES;
+export default BrigadistaSI;

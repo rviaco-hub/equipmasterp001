@@ -27,7 +27,7 @@ import {
 
 
 
-const PrimerosAuxES = ({ preguntas }) => {
+const ControlIncendios = ({ preguntas }) => {
   const [respuestas, setRespuestas] = useState({}); // { [id]: 'A'|'B'|'C'|'D' }
   const [enviado, setEnviado] = useState(false);
   const [puntaje, setPuntaje] = useState(0);
@@ -84,7 +84,7 @@ const PrimerosAuxES = ({ preguntas }) => {
       }}
     >
       <Typography variant="h5" sx={{ mb: 2, padding: "30px 0" }}>
-        Cuestionario de capacitación
+        Cuestionario control de incendios
       </Typography>
 
       <Grid container spacing={2}>
@@ -269,4 +269,4 @@ const PrimerosAuxES = ({ preguntas }) => {
   );
 };
 
-export default PrimerosAuxES;
+export default ControlIncendios;
