@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PrimerosAuxES from "./Contenido/PrimerosAuxES";
 import ControlIncendios from "./Contenido/ControlIncendios";
 import BrigadistaSI from "./Contenido/BrigadistaSI";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 
 
-const Evaluaciones = () => {
+const Evaluaciones = ({ userData, API_BASE_URL }) => {
   const [visibleFormPrimerosAuxES, setVisibleFormPrimerosAuxES] = useState("block")
   const preguntasFormPrimerosAuxES = [
     {
@@ -207,13 +207,18 @@ const Evaluaciones = () => {
     if (form === "brigadista") setVisibleFormBrigadistaSI("block");
   };
 
+  useEffect(() => {
+    console.log(userData);
+
+  }, [])
+
   return (
-    <section style={{margin:"100px 0"}}>
+    <section style={{ margin: "100px 0" }}>
 
       {/* 📌 ÍNDICE DE SECCIONES */}
       <Box
         sx={{
-          width:"100%",
+          width: "100%",
           display: "grid",
           gridTemplateColumns: {
             xs: "1fr",   // móviles → 1 columna
@@ -223,20 +228,23 @@ const Evaluaciones = () => {
           gap: 0.5,
         }}
       >
-        <Button style={{color:"red", backgroundColor:"#ddd"}} onClick={() => mostrarForm("primeros")}>Primeros Auxilios</Button>
-        <Button style={{color:"red", backgroundColor:"#ddd"}} onClick={() => mostrarForm("incendios")}>Control de Incendios</Button>
-        <Button style={{color:"red", backgroundColor:"#ddd"}} onClick={() => mostrarForm("brigadista")}>Brigadista</Button>
+        <Button style={{ color: "red", backgroundColor: "#ddd" }} onClick={() => mostrarForm("primeros")}>Primeros Auxilios</Button>
+        <Button style={{ color: "red", backgroundColor: "#ddd" }} onClick={() => mostrarForm("incendios")}>Control de Incendios</Button>
+        <Button style={{ color: "red", backgroundColor: "#ddd" }} onClick={() => mostrarForm("brigadista")}>Brigadista</Button>
       </Box>
+      
+      <Typography>{userData.user} {userData.cargo}</Typography>
+
 
 
       <div style={{ display: visibleFormPrimerosAuxES }} >
-        <PrimerosAuxES preguntas={preguntasFormPrimerosAuxES} />
+        <PrimerosAuxES API_BASE_URL={API_BASE_URL} userData={userData} preguntas={preguntasFormPrimerosAuxES} />
       </div>
       <div style={{ display: visibleFormControlIncendios }} >
-        <ControlIncendios preguntas={preguntasFormControlIncendios} />
+        <ControlIncendios API_BASE_URL={API_BASE_URL} userData={userData} preguntas={preguntasFormControlIncendios} />
       </div>
       <div style={{ display: visibleFormBrigadistaSI }} >
-        <BrigadistaSI preguntas={preguntasFormBrigadistaSI} />
+        <BrigadistaSI API_BASE_URL={API_BASE_URL} userData={userData} preguntas={preguntasFormBrigadistaSI} />
       </div>
 
     </section>

@@ -6,7 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Box } from "@mui/material";
 
 
-const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, SetRolUser, isOpen, onClose }) => {
+const AuthModal = ({ userData, SetVisibleApp, SetUser, SetIdUser, SetRolUser, isOpen, onClose, API_BASE_URL }) => {
   const [isRegister, setIsRegister] = useState(false);
   const [form, setForm] = useState({ cedula: "", nombre: "", rol: false });
   const [verified, setVerified] = useState(false);
@@ -15,6 +15,7 @@ const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, SetRolUser, isOpen, onCl
   if (!isOpen) return null;
 
   const handleChange = (e) => {
+    
     const target = e.target;
     const { name, value } = target;
     // Validación directa: solo números permitidos para "cedula"
@@ -43,12 +44,8 @@ const AuthModal = ({ SetVisibleApp, SetUser, SetIdUser, SetRolUser, isOpen, onCl
     // Definimos endpoint según la acción (login / registro)
     const endpoint = isRegister ? "register" : "login";
 
-    // Usa una URL base flexible para balanceo y despliegue
-    const API_BASE_URL = import.meta.env.VITE_API_URL  //"http://localhost:5000";
-    // import.meta.env.VITE_API_URL 
-
     try {
-      const response = await fetch(`${API_BASE_URL}/api/users/${endpoint}`, {
+      const response = await fetch(`${API_BASE_URL}api/users/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

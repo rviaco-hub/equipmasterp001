@@ -27,7 +27,7 @@ import {
 
 
 
-const BrigadistaSI = ({ preguntas }) => {
+const BrigadistaSI = ({userData, preguntas }) => {
   const [respuestas, setRespuestas] = useState({}); // { [id]: 'A'|'B'|'C'|'D' }
   const [enviado, setEnviado] = useState(false);
   const [puntaje, setPuntaje] = useState(0);
@@ -42,31 +42,56 @@ const BrigadistaSI = ({ preguntas }) => {
     setRespuestas((prev) => ({ ...prev, [id]: valor }));
   };
 
-  const handleSubmit = () => {
-    let correctas = 0;
-    let malas = [];
+  
+const handleSubmit = async () => {
 
-    preguntas.forEach((p) => {
-      const r = respuestas[p.id];
-      if (r === p.correcta) {
-        correctas += 1;
-      } else {
-        malas.push(p);
-      }
-    });
+  
+  const isInvalid = (value) =>
+    !value ||                     // null, undefined, vacío
+    typeof value !== "string" ||  // no es string
+    !value.trim() ||              // contiene solo espacios
+    /\d/.test(value);             // contiene números
 
-    setPuntaje(correctas);
-    setPreguntasMalas(malas);
+  if (isInvalid(userData?.cargo) || isInvalid(userData?.ciudad)) {
+    alert("Los datos deben actualizarse para continuar");
+    return;
+  }
 
-    const pct = Math.round((correctas / preguntas.length) * 100);
-    const notaFinal = (correctas / preguntas.length) * 5;
 
-    setPorcentaje(pct);
-    setNota(notaFinal.toFixed(1));
 
-    setEnviado(true);
-    setOpenModal(true);
-  };
+  let correctas = 0;
+  let malas = [];
+
+  preguntas.forEach((p) => {
+    const r = respuestas[p.id];
+    if (r === p.correcta) {
+      correctas += 1;
+    } else {
+      malas.push(p);
+    }
+  });
+
+  setPuntaje(correctas);
+  setPreguntasMalas(malas);
+
+  const pct = Math.round((correctas / preguntas.length) * 100);
+  const notaFinal = (correctas / preguntas.length) * 5;
+
+  setPorcentaje(pct);
+  setNota(notaFinal.toFixed(1));
+
+  setEnviado(true);
+  setOpenModal(true);
+
+
+};
+
+
+
+
+
+
+
 
   const handleReset = () => {
     setRespuestas({});
@@ -84,7 +109,7 @@ const BrigadistaSI = ({ preguntas }) => {
       }}
     >
       <Typography variant="h5" sx={{ mb: 2, padding: "30px 0" }}>
-        Cuestionario de capacitación
+        Cuestionario de capacitación Brigadista
       </Typography>
 
       <Grid container spacing={2}>

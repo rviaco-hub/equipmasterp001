@@ -19,7 +19,7 @@ import {
   DialogActions,
 } from "@mui/material";
 
-const Dashboard = ({ trabajadores = [] }) => {
+const Dashboard = ({ trabajadores = [], API_BASE_URL }) => {
 
   // ============================
   //   SECTION DATOS TRABAJADORES
@@ -61,8 +61,6 @@ const Dashboard = ({ trabajadores = [] }) => {
   }, [videos]);
 
 
-  const API_BASE_URL = import.meta.env.VITE_API_URL // "http://localhost:5000";
-
   // ============================
   // GET videos
   // ============================
@@ -71,7 +69,7 @@ const Dashboard = ({ trabajadores = [] }) => {
   }, []);
 
   const refreshData = () => {
-    fetch(`${API_BASE_URL}/api/videos/capacitacion`)
+    fetch(`${API_BASE_URL}api/videos/capacitacion`)
       .then((response) => response.json())
       .then((data) => setVideos(data))
       .catch(() => setVideos([]));
@@ -98,7 +96,7 @@ const Dashboard = ({ trabajadores = [] }) => {
     }
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/videos/capacitacion`, {
+      const res = await fetch(`${API_BASE_URL}api/videos/capacitacion`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -140,7 +138,7 @@ const Dashboard = ({ trabajadores = [] }) => {
       formData.append("file", videoFile);
       formData.append("titulo", videoTitulo.trim());
 
-      const res = await fetch(`${API_BASE_URL}/api/videos/capacitacion`, {
+      const res = await fetch(`${API_BASE_URL}api/videos/capacitacion`, {
         method: "POST",
         body: formData,
       });
@@ -167,7 +165,7 @@ const Dashboard = ({ trabajadores = [] }) => {
     if (!window.confirm("¿Seguro que deseas eliminar este video?")) return;
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/videos/capacitacion/${id}`, {
+      const res = await fetch(`${API_BASE_URL}api/videos/capacitacion/${id}`, {
         method: "DELETE",
       });
 

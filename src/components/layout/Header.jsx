@@ -22,19 +22,21 @@ const Header = ({ rolUser, setView, user }) => {
   return (
     <header className="header">
       <div className="logo-container">
-        <img onClick={()=>setView("Home")} src={logo} alt="EquipMaster Logo" className="logo-img" />
+        <img onClick={() => setView("Home")} src={logo} alt="EquipMaster Logo" className="logo-img" />
       </div>
       {!rolUser ?
         <nav className={`nav ${menuOpen ? "open" : ""}`}>
-          <button onClick={()=>setView("Capacitaciones")}>Capacitaciones</button>
-          <button onClick={()=>setView("Evaluaciones")}>Evaluaciones</button>
+          <button onClick={() => setView("Perfil")}>Perfil</button>
+          <button onClick={() => setView("Capacitaciones")}>Capacitaciones</button>
+          <button onClick={() => setView("Evaluaciones")}>Evaluaciones</button>
           <h4>{user}</h4>
         </nav> :
         <nav className={`nav ${menuOpen ? "open" : ""}`}>
-          <button onClick={()=>setView("Dashboard")}>Reportes</button>
+          <button onClick={() => setView("Perfil")}>Perfil</button>
+          <button onClick={() => setView("Dashboard")}>Reportes</button>
           <h4>{user}</h4>
         </nav>
-        }
+      }
 
       <div className="menu-toggle" onClick={() => setMenuOpen(prev => !prev)}>
         ☰

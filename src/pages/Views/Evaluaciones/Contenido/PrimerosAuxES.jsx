@@ -27,7 +27,7 @@ import {
 
 
 
-const PrimerosAuxES = ({ preguntas }) => {
+const PrimerosAuxES = ({ API_BASE_URL, userData, preguntas }) => {
   const [respuestas, setRespuestas] = useState({}); // { [id]: 'A'|'B'|'C'|'D' }
   const [enviado, setEnviado] = useState(false);
   const [puntaje, setPuntaje] = useState(0);
@@ -43,6 +43,18 @@ const PrimerosAuxES = ({ preguntas }) => {
   };
 
   const handleSubmit = () => {
+
+    const isInvalid = (value) =>
+      !value ||                     // null, undefined, vacío
+      typeof value !== "string" ||  // no es string
+      !value.trim() ||              // contiene solo espacios
+      /\d/.test(value);             // contiene números
+
+    if (isInvalid(userData?.cargo) || isInvalid(userData?.ciudad)) {
+      alert("Los datos deben actualizarse para continuar");
+      return;
+    }
+
     let correctas = 0;
     let malas = [];
 
@@ -66,6 +78,32 @@ const PrimerosAuxES = ({ preguntas }) => {
 
     setEnviado(true);
     setOpenModal(true);
+
+    // 🔥 Enviar resultados al backend
+    fetch(`${API_BASE_URL}api/evaluaciones"`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idUser: userData.cedula,
+        cargo: userData.cargo,
+        ciudad: userData.ciudad,
+        puntaje: correctas,
+        porcentaje: pct,
+        nota: notaFinal.toFixed(1),
+        fecha: new Date(),
+        tipo: "PrimerosAuxilios"
+      }),
+
+    })
+      .then(res => res.json())
+      .then(data => console.log("✔ Enviado a backend:", data))
+      .catch(err => console.error("❗ Error enviando evaluacion:", err));
+
+
+
+
   };
 
   const handleReset = () => {
@@ -84,7 +122,7 @@ const PrimerosAuxES = ({ preguntas }) => {
       }}
     >
       <Typography variant="h5" sx={{ mb: 2, padding: "30px 0" }}>
-        Cuestionario de capacitación
+        Cuestionario de capacitación Primeros auxilios
       </Typography>
 
       <Grid container spacing={2}>

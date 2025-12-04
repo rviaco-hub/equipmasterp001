@@ -27,7 +27,7 @@ import {
 
 
 
-const ControlIncendios = ({ preguntas }) => {
+const ControlIncendios = ({userData, preguntas }) => {
   const [respuestas, setRespuestas] = useState({}); // { [id]: 'A'|'B'|'C'|'D' }
   const [enviado, setEnviado] = useState(false);
   const [puntaje, setPuntaje] = useState(0);
@@ -43,6 +43,19 @@ const ControlIncendios = ({ preguntas }) => {
   };
 
   const handleSubmit = () => {
+
+  const isInvalid = (value) =>
+    !value ||                     // null, undefined, vacío
+    typeof value !== "string" ||  // no es string
+    !value.trim() ||              // contiene solo espacios
+    /\d/.test(value);             // contiene números
+
+  if (isInvalid(userData?.cargo) || isInvalid(userData?.ciudad)) {
+    alert("Los datos deben actualizarse para continuar");
+    return;
+  }
+
+
     let correctas = 0;
     let malas = [];
 
