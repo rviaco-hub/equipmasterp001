@@ -10,7 +10,7 @@ const PerfilUsuario = ({ userData,setUserData, idUser, API_BASE_URL }) => {
     
         const fetchUserData = async () => {
             try {
-                const res = await fetch(`${API_BASE_URL}api/perfil/${idUser}`);
+                const res = await fetch(`${API_BASE_URL}/api/perfil/${idUser}`);
                 const data = await res.json();
 
                 console.log(res);
@@ -53,7 +53,7 @@ const PerfilUsuario = ({ userData,setUserData, idUser, API_BASE_URL }) => {
         setMensaje("");
 
         try {
-            const res = await fetch(`${API_BASE_URL}api/perfil/${userData.idUser}`, {
+            const res = await fetch(`${API_BASE_URL}/api/perfil/${userData.idUser}`, {
                 method: "POST",   // tú usas POST en router
                 headers: {
                     "Content-Type": "application/json",
