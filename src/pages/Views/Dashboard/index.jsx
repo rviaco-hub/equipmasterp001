@@ -96,7 +96,7 @@ const Dashboard = ({ trabajadores = [], API_BASE_URL }) => {
     }
 
     try {
-      const res = await fetch(`${API_BASE_URL}api/videos/capacitacion`, {
+      const res = await fetch(`${API_BASE_URL}/api/videos/capacitacion`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -138,7 +138,7 @@ const Dashboard = ({ trabajadores = [], API_BASE_URL }) => {
       formData.append("file", videoFile);
       formData.append("titulo", videoTitulo.trim());
 
-      const res = await fetch(`${API_BASE_URL}api/videos/capacitacion`, {
+      const res = await fetch(`${API_BASE_URL}/api/videos/capacitacion`, {
         method: "POST",
         body: formData,
       });
@@ -165,7 +165,7 @@ const Dashboard = ({ trabajadores = [], API_BASE_URL }) => {
     if (!window.confirm("¿Seguro que deseas eliminar este video?")) return;
 
     try {
-      const res = await fetch(`${API_BASE_URL}api/videos/capacitacion/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/videos/capacitacion/${id}`, {
         method: "DELETE",
       });
 

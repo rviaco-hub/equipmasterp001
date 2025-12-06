@@ -80,7 +80,7 @@ const PrimerosAuxES = ({ API_BASE_URL, userData, preguntas }) => {
     setOpenModal(true);
 
     // 🔥 Enviar resultados al backend
-    fetch(`${API_BASE_URL}api/evaluaciones"`, {
+    fetch(`${API_BASE_URL}/api/evaluaciones"`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
