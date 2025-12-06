@@ -45,7 +45,7 @@ const AuthModal = ({ userData, SetVisibleApp, SetUser, SetIdUser, SetRolUser, is
     const endpoint = isRegister ? "register" : "login";
 
     try {
-      const response = await fetch(`${API_BASE_URL}api/users/${endpoint}`, {
+      const response = await fetch(`${API_BASE_URL}/api/users/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
