@@ -269,7 +269,7 @@ const Dashboard = ({ trabajadores = [], API_BASE_URL }) => {
         + Agregar video
       </Button>
 
-      <TableContainer component={Paper} sx={{ width: "100%", overflowX: "auto" }}>
+      <TableContainer component={Paper} sx={{ width: "100%", overflowX: "auto", maxHeight: 300, }}>
         <Table size="small">
           <TableHead>
             <TableRow>
