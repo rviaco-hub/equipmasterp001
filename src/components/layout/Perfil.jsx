@@ -13,8 +13,6 @@ const PerfilUsuario = ({ userData,setUserData, idUser, API_BASE_URL }) => {
                 const res = await fetch(`${API_BASE_URL}/api/perfil/${idUser}`);
                 const data = await res.json();
 
-                console.log(res);
-                console.log(data);
                 setUserData({
                     idUser: data.cedula || 0,
                     user: data.nombre || "",

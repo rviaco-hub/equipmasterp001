@@ -38,6 +38,11 @@ function App() {
     }
   }, []);
 
+  useEffect(()=>{
+    console.log("appjs42: ", userData);
+    
+  },[userData])
+
   return (
     visibleApp ?
       <>

@@ -79,14 +79,17 @@ const PrimerosAuxES = ({ API_BASE_URL, userData, preguntas }) => {
     setEnviado(true);
     setOpenModal(true);
 
+    console.log(`PrimerosAuxES82: ${userData}`);
+    
+
     // 🔥 Enviar resultados al backend
-    fetch(`${API_BASE_URL}/api/evaluaciones"`, {
+    fetch(`${API_BASE_URL}/api/evaluaciones`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        idUser: userData.cedula,
+        idUser: userData.idUser,
         cargo: userData.cargo,
         ciudad: userData.ciudad,
         puntaje: correctas,
@@ -100,9 +103,6 @@ const PrimerosAuxES = ({ API_BASE_URL, userData, preguntas }) => {
       .then(res => res.json())
       .then(data => console.log("✔ Enviado a backend:", data))
       .catch(err => console.error("❗ Error enviando evaluacion:", err));
-
-
-
 
   };
 

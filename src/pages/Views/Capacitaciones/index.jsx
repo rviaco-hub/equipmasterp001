@@ -57,7 +57,7 @@ const Dashboard = ({ trabajadores = [], API_BASE_URL }) => {
 
 
   useEffect(() => {
-    console.log(videos)
+    console.log(videos, " videos")
   }, [videos]);
 
 

@@ -207,10 +207,6 @@ const Evaluaciones = ({ userData, API_BASE_URL }) => {
     if (form === "brigadista") setVisibleFormBrigadistaSI("block");
   };
 
-  useEffect(() => {
-    console.log(userData);
-
-  }, [])
 
   return (
     <section style={{ margin: "100px 0" }}>
@@ -233,7 +229,8 @@ const Evaluaciones = ({ userData, API_BASE_URL }) => {
         <Button style={{ color: "red", backgroundColor: "#ddd" }} onClick={() => mostrarForm("brigadista")}>Brigadista</Button>
       </Box>
       
-      <Typography>{userData.user} {userData.cargo}</Typography>
+      <Typography>{userData.user}</Typography>
+      <Typography> {userData.cargo}</Typography>
 
 
 
